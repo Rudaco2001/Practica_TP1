@@ -13,7 +13,7 @@ public class Vampire {
 		health -= damage;
 	}
 	
-	public int Damage() {
+	public int getDamage() {
 		return damage;
 	}
 	
