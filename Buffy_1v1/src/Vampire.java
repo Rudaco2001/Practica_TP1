@@ -1,6 +1,8 @@
 
 public class Vampire {
 
+
+
 	private int damage = 1; 
 	private int health = 5;
 	private int pos_X;
@@ -13,7 +15,11 @@ public class Vampire {
 		health -= damage;
 	}
 	
+
 	public int getDamage() {
+
+	public int Damage() {
+
 		return damage;
 	}
 	
@@ -21,5 +27,7 @@ public class Vampire {
 		if (ciclo % 2 == 0)
 		pos_X--;
 	}
+
+
 
 }
