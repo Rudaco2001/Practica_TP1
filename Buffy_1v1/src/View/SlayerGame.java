@@ -1,19 +1,17 @@
 package View;
-import Game.Game;
-import characters.Vampire;
+import logic.Game;
+import control.Controller;
+import java.util.Scanner;
+
 public class SlayerGame {
 
 	public static void main(String[] args) {
-		
+		long seed = 0;
 		Game game;
-		game = new Game();
-		game.addVampire(3, 2);
-		game.addVampire(0, 2);
-		game.addVampire(7, 3);
-		game.addVampire(3, 3);
-		game.addVampire(5, 0);
-		game.addVampire(0, 0);
-		System.out.println(game);
+		game = new Game(seed);
+		Scanner scanner = new Scanner(System.in);
+		Controller controller = new Controller(game, scanner);
+		controller.run();
 
 	}
 
