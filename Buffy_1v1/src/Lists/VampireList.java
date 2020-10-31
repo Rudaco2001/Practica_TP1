@@ -2,21 +2,23 @@ package Lists;
 import characters.Vampire;
 public class VampireList {
 	private Vampire[] vampirelist;
-	private int k = 0;
-	public VampireList(int i) {
-		vampirelist = new Vampire[i];
+	private int nVampire = 0;
+	public VampireList(int maxVampire) {
+		vampirelist = new Vampire[maxVampire];
+		
 	}
 	public void addVampire(int i, int j) {
-		if(k < vampirelist.length)
+		if(nVampire < vampirelist.length)
 		{
-			vampirelist[k] = new Vampire(j, i);
-			k++;
+			vampirelist[nVampire] = new Vampire(j, i);
+			nVampire++;
+			
 		}
 	}
 	public boolean isVampireList(int i, int j) {
 		boolean encontrado = false;
-		for	(int i1 = 0; i1 < k; i1++ ) {
-			if (vampirelist[i1].isVampire(i, j))
+		for	(int i1 = 0; i1 < nVampire; i1++ ) {
+			if (vampirelist[i1].isVampire(j, i))
 				encontrado = true;
 		}
 		return encontrado;
