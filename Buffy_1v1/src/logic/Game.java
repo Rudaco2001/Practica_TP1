@@ -13,49 +13,85 @@ public class Game {
 	private ListContainer listcontainer;
 	private Player player;
 	private GamePrinter printer;
+	private int cicle = 0;
 	
 	public Game(long seed) {
 		rand = new Random(seed);
-		listcontainer = new ListContainer(5, BOARD_LENGTH*BOARD_WIDTH);
+		listcontainer = new ListContainer(5, BOARD_LENGTH*BOARD_WIDTH, this);
 		player = new Player();
 		printer = new GamePrinter(this, BOARD_LENGTH, BOARD_WIDTH);
 		
 	}
+	
 	public String toString() {
 		return printer.toString();
 	}
+	
+	public boolean isVampire(int i, int j) {
+		return listcontainer.isVampireList(i, j);
+	}
+	
+	public boolean isSlayer(int i, int j) {
+		return listcontainer.isSlayerList(i, j);
+	}
+	
 	public String GetString(int i, int j) {
-		if(listcontainer.isVampireList(j, i))
-			return "V";
-		else if(listcontainer.isSlayerList(j, i))
-			return "S";
+		if(isVampire(i, j))
+			return listcontainer.VampireString(i, j);
+		else if(isSlayer(i, j))
+			return listcontainer.SlayerString(i, j);
 		else
 			return " ";
 	}
-	public void addVampire() {
-		int spawn_j = randReadint(BOARD_WIDTH);
-		System.out.println("Intentando vampiro en " + BOARD_LENGTH + " " + spawn_j);
-		if (!listcontainer.isVampireList(BOARD_LENGTH - 1, spawn_j)&&(!listcontainer.isSlayerList(BOARD_LENGTH - 1, spawn_j))) { 
-			listcontainer.addVampire(BOARD_LENGTH - 1, spawn_j);
-			System.out.println("Creando vampiro en " + BOARD_LENGTH + " " + spawn_j);
-		}
+	
+	public void addVampire() {		
+		
+			listcontainer.addVampire();
 			
 	}
+			
+		
 	public void addSlayer(int s_i,int s_j) {
-		if ((s_i < BOARD_LENGTH - 1)&&(s_i >= 0)&&(s_j >= 0)&&(s_j <= BOARD_LENGTH)&&(!listcontainer.isVampireList(s_i, s_j))&&(!listcontainer.isSlayerList(s_i, s_j))){
+		
 			listcontainer.addSlayer(s_i, s_j);
-		}
-		else
-			System.out.println("No ha sido posible crear un Slayer en esa posición");
+		
 	}
+	
 	public int randReadint(int n) {
 		return rand.nextInt(n);
 	}
+	
 	public Float randReadfloat() {
 		return rand.nextFloat();
 	}
-		
-
 	
+	public void moveVampire() {
+		listcontainer.moveVampire();
+	}
+	
+	public void Update() {
+		
+		moveVampire();
+		
+		if(randReadfloat() < 0.5) {
+			addVampire();	
+		}
+		cicle++;
+	}
+	public int GetCicle() {
+		return cicle;
+	}
+	
+	public void SlayerAttack()
+	{
+		listcontainer.SlayerAttack();
+	}
 
+	public void VampireTakeDamage(int i, int j, int damage) {
+		listcontainer.VampireTakeDamage(i, j, damage);
+		
+	}
+	
+	
 }
+	
