@@ -66,7 +66,8 @@ public class Controller {
     		case "n":
     		case "none":
     		case "":
-    			game.addVampire();
+    			game.Update();
+    			game.SlayerAttack();
     			System.out.println("avanzando");
     			break;
     			
