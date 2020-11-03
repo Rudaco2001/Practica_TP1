@@ -15,7 +15,7 @@ public class SlayerList {
 	public void addSlayer(int s_i, int s_j) {
 		if(nSlayer < slayerlist.length)
 		{
-			if ((s_i <= game.BOARD_WIDTH - 1)&&(s_i >= 0)&&(s_j >= 0)&&(s_j < game.BOARD_LENGTH - 1)&&(!game.isVampire(s_i, s_j))&&(!game.isSlayer(s_i, s_j))){
+			if ((s_i <= game.getBoardWidth() - 1)&&(s_i >= 0)&&(s_j >= 0)&&(s_j < game.getBoardLength() - 1)&&(!game.isVampire(s_i, s_j))&&(!game.isSlayer(s_i, s_j))){
 				slayerlist[nSlayer] = new Slayer(s_i, s_j, game);
 				nSlayer++;
 			}		
