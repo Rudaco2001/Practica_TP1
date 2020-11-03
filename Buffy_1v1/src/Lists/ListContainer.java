@@ -40,4 +40,9 @@ public class ListContainer {
 		vampirelist.VampireTakeDamage(i, j, damage);
 		
 	}
+	public void removeCorpses() {
+		vampirelist.removeCorpses();
+		//slayerlist.removeCorpses();
+		
+	}
 }
