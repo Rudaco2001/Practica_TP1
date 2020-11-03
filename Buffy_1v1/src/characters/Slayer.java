@@ -29,7 +29,7 @@ public class Slayer {
 		return "S[" + health + "]";
 	}
 	public void Attack() {
-		for (int j = pos_Y + 1; j < game.BOARD_LENGTH; j++) {
+		for (int j = pos_Y + 1; j < game.getBoardLength(); j++) {
 			if(game.isVampire(pos_X, j)) {
 				game.VampireTakeDamage(pos_X, j, damage);
 				break;
