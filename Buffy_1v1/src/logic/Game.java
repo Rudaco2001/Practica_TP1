@@ -5,21 +5,30 @@ import View.GamePrinter;
 import Lists.ListContainer;
 import characters.Player;
 
+
 public class Game {
 
-	public final int BOARD_LENGTH = 10;
-	public final int BOARD_WIDTH = 4;
+	private int BOARD_LENGTH;
+	private int BOARD_WIDTH;
+	private int numberOfVampires;
+	private double vampireFrequency;
 	private Random rand;
 	private ListContainer listcontainer;
 	private Player player;
 	private GamePrinter printer;
 	private int cicle = 0;
 	
-	public Game(long seed) {
+	
+	public Game(long seed, Level level) {
 		rand = new Random(seed);
-		listcontainer = new ListContainer(5, BOARD_LENGTH*BOARD_WIDTH, this);
+		BOARD_LENGTH = level.getDim_x();
+		BOARD_WIDTH = level.getDim_y();
+		numberOfVampires = level.getNumberOfVampires();
+		vampireFrequency = level.getVampireFrequency();
+		listcontainer = new ListContainer(numberOfVampires, BOARD_LENGTH*BOARD_WIDTH, this);
 		player = new Player();
 		printer = new GamePrinter(this, BOARD_LENGTH, BOARD_WIDTH);
+		
 		
 	}
 	
@@ -73,7 +82,7 @@ public class Game {
 		
 		moveVampire();
 		
-		if(randReadfloat() < 0.5) {
+		if(randReadfloat() < vampireFrequency) {
 			addVampire();	
 		}
 		cicle++;
@@ -92,6 +101,14 @@ public class Game {
 		
 	}
 	
-	
+	public int getBoardWidth() {
+		return BOARD_WIDTH;
+	}
+	public int getBoardLength() {
+		return BOARD_LENGTH;
+	}
+	public void removeCorpses() {
+		listcontainer.removeCorpses();
+	}
 }
 	
