@@ -4,20 +4,23 @@ import logic.Game;
 public class VampireList {
 	private Vampire[] vampirelist;
 	private int nVampire = 0;
+	private int totalVampires = 0;
 	Game game;
 	public VampireList(int maxVampire, Game game) {
 		vampirelist = new Vampire[maxVampire];
 		this.game = game;
+		
 	}
 	public void addVampire() {
-		if(nVampire < vampirelist.length)
+		if(totalVampires < vampirelist.length)
 		{
-			int spawn_i = game.randReadint(game.BOARD_WIDTH);
-			System.out.println("Intentando vampiro en " + spawn_i + " " + game.BOARD_LENGTH);
-			if (!game.isVampire(spawn_i, game.BOARD_LENGTH - 1)) { 
-				vampirelist[nVampire] = new Vampire(spawn_i, game.BOARD_LENGTH - 1, game);
+			int spawn_i = game.randReadint(game.getBoardWidth());
+			System.out.println("Intentando vampiro en " + spawn_i + " " + game.getBoardLength());
+			if (!game.isVampire(spawn_i, game.getBoardLength() - 1)) { 
+				vampirelist[nVampire] = new Vampire(spawn_i, game.getBoardLength() - 1, game);
 				nVampire++;
-				System.out.println("Creando vampiro en " + spawn_i + " " + game.BOARD_LENGTH);
+				totalVampires++;
+				System.out.println("Creando vampiro en " + spawn_i + " " + game.getBoardLength());
 			}
 			
 		}
@@ -53,4 +56,21 @@ public class VampireList {
 		
 		}
 	}
+	public void removeCorpses() {
+		for	(int i = 0; i < nVampire; i++ ) {
+			if (vampirelist[i].isDead()) {
+				removeVampire(i);
+			}
+		}
+		
+	}
+	private void removeVampire(int i) {
+		for (int j = i; j < nVampire - 1; j++) {
+			vampirelist[j] = vampirelist[j+1];
+		}
+		nVampire--;
+		vampirelist[nVampire] = null;
+		
+	}
+	
 }
