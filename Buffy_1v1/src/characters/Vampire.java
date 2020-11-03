@@ -40,5 +40,9 @@ public class Vampire {
 			return i == pos_X && j == pos_Y;
 				
 	}
+
+	public boolean isDead() {		
+		return health <= 0;
+	}
 }
 
