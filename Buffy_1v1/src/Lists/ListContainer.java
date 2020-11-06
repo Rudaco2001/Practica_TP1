@@ -42,7 +42,15 @@ public class ListContainer {
 	}
 	public void removeCorpses() {
 		vampirelist.removeCorpses();
-		//slayerlist.removeCorpses();
+		slayerlist.removeCorpses();
+		
+	}
+	public void VampireAttack() {
+		vampirelist.VampireAttack();
+		
+	}
+	public void SlayerTakeDamage(int i, int j, int damage) {
+		slayerlist.SlayerTakeDamage(i, j, damage);
 		
 	}
 }
