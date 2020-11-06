@@ -73,6 +73,9 @@ public class Game {
 	public Float randReadfloat() {
 		return rand.nextFloat();
 	}
+	public double randReaddouble() {
+		return rand.nextDouble();
+	}
 	
 	public void moveVampire() {
 		listcontainer.moveVampire();
@@ -82,7 +85,7 @@ public class Game {
 		
 		moveVampire();
 		
-		if(randReadfloat() < vampireFrequency) {
+		if(randReaddouble() < vampireFrequency) {
 			addVampire();	
 		}
 		cicle++;
@@ -90,15 +93,23 @@ public class Game {
 	public int GetCicle() {
 		return cicle;
 	}
-	
+	public void Attack() {
+		SlayerAttack();
+		VampireAttack();
+	}
 	public void SlayerAttack()
 	{
 		listcontainer.SlayerAttack();
 	}
-
+	public void VampireAttack() {
+		listcontainer.VampireAttack();
+	}
 	public void VampireTakeDamage(int i, int j, int damage) {
 		listcontainer.VampireTakeDamage(i, j, damage);
 		
+	}
+	public void SlayerTakeDamage(int damage, int i, int j) {
+		listcontainer.SlayerTakeDamage(i, j, damage);		
 	}
 	
 	public int getBoardWidth() {
@@ -110,5 +121,8 @@ public class Game {
 	public void removeCorpses() {
 		listcontainer.removeCorpses();
 	}
+	
+
+	
 }
 	
