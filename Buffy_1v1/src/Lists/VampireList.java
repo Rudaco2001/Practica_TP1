@@ -60,6 +60,7 @@ public class VampireList {
 		for	(int i = 0; i < nVampire; i++ ) {
 			if (vampirelist[i].isDead()) {
 				removeVampire(i);
+				i--;
 			}
 		}
 		
@@ -70,6 +71,12 @@ public class VampireList {
 		}
 		nVampire--;
 		vampirelist[nVampire] = null;
+		
+	}
+	public void VampireAttack() {
+		for	(int i2 = 0; i2 < nVampire; i2++ ) {
+			vampirelist[i2].Attack();
+		}
 		
 	}
 	
