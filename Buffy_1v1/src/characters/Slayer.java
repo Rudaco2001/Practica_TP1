@@ -37,6 +37,9 @@ public class Slayer {
 		}
 		
 	}
+	public boolean isDead() {		
+		return health <= 0;
+	}
 	
 
 }
