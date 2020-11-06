@@ -46,5 +46,28 @@ public class SlayerList {
 		// TODO Auto-generated method stub
 		
 	}
+	public void SlayerTakeDamage(int i, int j, int damage) {
+		for	(int i1 = 0; i1 < nSlayer; i1++ ) {
+			if (slayerlist[i1].isSlayer(i, j))
+				slayerlist[i1].takeDamage(damage);
+		}
+		
+	}
+	public void removeCorpses() {
+		for	(int i = 0; i < nSlayer; i++ ) {
+			if (slayerlist[i].isDead()) {
+				removeSlayer(i);
+			}
+		}
+		
+	}
+	private void removeSlayer(int i) {
+		for (int j = i; j < nSlayer - 1; j++) {
+			slayerlist[j] = slayerlist[j+1];
+		}
+		nSlayer--;
+		slayerlist[nSlayer] = null;
+		
+	}
 
 }
