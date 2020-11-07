@@ -60,9 +60,13 @@ public class Game {
 	}
 			
 		
-	public void addSlayer(int s_i,int s_j) {
-		
+	public void addSlayer(int s_i,int s_j) { //modificado
+		if(player.getCoins() >= ListContainer.slayergetCosto()) {
 			listcontainer.addSlayer(s_i, s_j);
+			player.addCoins(-ListContainer.slayergetCosto());
+		}		
+		else
+			System.out.println("Monedas insuficientes");
 		
 	}
 	
@@ -81,10 +85,10 @@ public class Game {
 		listcontainer.moveVampire();
 	}
 	
-	public void Update() {
+	public void Update() { //modificado
 		
 		moveVampire();
-		
+		addCoins();
 		if(randReaddouble() < vampireFrequency) {
 			addVampire();	
 		}
@@ -121,7 +125,17 @@ public class Game {
 	public void removeCorpses() {
 		listcontainer.removeCorpses();
 	}
+	public void addCoins() { //creado
+		if(randReadfloat() < 0.5) {
+			player.addCoins(10);
+			System.out.println("añadiendo monedas");
+		}
+		
+	}
 	
+	public String PlayerString() {
+		return "Coins: " + player.getCoins();
+	}
 
 	
 }
