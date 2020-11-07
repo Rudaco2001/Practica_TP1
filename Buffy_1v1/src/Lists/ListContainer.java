@@ -53,4 +53,7 @@ public class ListContainer {
 		slayerlist.SlayerTakeDamage(i, j, damage);
 		
 	}
+	public static int slayergetCosto() {
+		return SlayerList.slayergetCosto();
+	}
 }
