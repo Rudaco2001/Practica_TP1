@@ -39,7 +39,8 @@ public class Controller {
 		// TODO fill your code
     	String cmd;
     	while(!gameEnded) {
-    		System.out.println(game);
+    		System.out.println(game.PlayerString());
+    		printGame();
     		System.out.println(prompt);
     		cmd = scanner.nextLine().toLowerCase();
     		switch(cmd)
