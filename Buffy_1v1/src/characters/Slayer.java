@@ -4,10 +4,11 @@ import logic.Game;
 
 public class Slayer {
 	private int damage = 1; 
-	private int health = 5;
+	private int health = 3;
 	private int pos_X;
 	private int pos_Y;
 	private Game game;
+	private static int costo = 50;
 	
 	public Slayer(int i,int j,Game game) {
 		pos_X = i;
@@ -40,6 +41,7 @@ public class Slayer {
 	public boolean isDead() {		
 		return health <= 0;
 	}
-	
-
+	public static int getCosto() {
+		return costo;
+	}
 }
