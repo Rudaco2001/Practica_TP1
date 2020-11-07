@@ -9,6 +9,7 @@ public class Vampire {
 	private int pos_Y;
 	private int cicloI = 1;
 	private Game game;
+	private static boolean isArrived = false;
 	public Vampire(int i, int j, Game game) {
 		// TODO Auto-generated constructor stub
 		this.game = game;
@@ -34,7 +35,8 @@ public class Vampire {
 		}
 		else 
 			cicloI++;
-		
+		if(isArrived())
+			isArrived = true;					
 	}
 	public String toString() {
 		return ("V[" + health + "]") ;
@@ -52,6 +54,9 @@ public class Vampire {
 	public void Attack() {
 		if (game.isSlayer(pos_X, pos_Y - 1))
 			game.SlayerTakeDamage(damage, pos_X, pos_Y - 1);		
+	}
+	public boolean isArrived() {
+		return pos_Y < 0;				
 	}
 }
 
