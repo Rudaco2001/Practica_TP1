@@ -61,7 +61,7 @@ public class SlayerList {
 		}
 		
 	}
-	private void removeSlayer(int i) {
+	public void removeSlayer(int i) {
 		for (int j = i; j < nSlayer - 1; j++) {
 			slayerlist[j] = slayerlist[j+1];
 		}
@@ -69,5 +69,11 @@ public class SlayerList {
 		slayerlist[nSlayer] = null;
 		
 	}
+	
+	public static int slayergetCosto() {
+		return Slayer.getCosto();
+	}
+	
+	
 
 }
