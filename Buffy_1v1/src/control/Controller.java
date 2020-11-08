@@ -31,15 +31,13 @@ public class Controller {
     public void  printGame() {
    	 System.out.println(game);
    }
-    public void GameEnd()
-    {
-    	gameEnded = true;
-    }
+   
     public void run() {
 		// TODO fill your code
     	String cmd;
-    	while(!gameEnded) {
+    	while(!game.getEnded()) {
     		System.out.println(game.PlayerString());
+    		remainVampMsg();
     		printGame();
     		System.out.println(prompt);
     		cmd = scanner.nextLine().toLowerCase();
@@ -62,7 +60,7 @@ public class Controller {
     		case "e":
     		case "exit":
     			System.out.println("saliendo");
-    			GameEnd();
+    			game.Exit();
     			break;
     		case "n":
     		case "none":
@@ -70,13 +68,23 @@ public class Controller {
     			game.Attack();
     			game.Update();
     			game.removeCorpses();
+    			game.isGameFinished();
     			System.out.println("avanzando");
     			break;
-    			
+    		default:
+    			errorMsg();
     		}
     		
     	}
     }
+
+	public void errorMsg() {
+		System.out.println("Comando incorrecto, por favor intentelo de nuevo");
+		
+	}
+	public void remainVampMsg() {
+		System.out.println("Remainig Vampires: " + game.reaminVamp());
+	}
 
 }
 
