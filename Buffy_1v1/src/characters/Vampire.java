@@ -9,12 +9,14 @@ public class Vampire {
 	private int pos_Y;
 	private int cicloI = 1;
 	private Game game;
+	private static int VampireCreated = 0;
 	private static boolean isArrived = false;
 	public Vampire(int i, int j, Game game) {
 		// TODO Auto-generated constructor stub
 		this.game = game;
 		pos_X = i;
-		pos_Y = j;		
+		pos_Y = j;	
+		VampireCreated++;
 	}
 	
 	public void takeDamage (int damage) {
@@ -57,6 +59,12 @@ public class Vampire {
 	}
 	public boolean isArrived() {
 		return pos_Y < 0;				
+	}
+	public static boolean getisArrived() {
+		return isArrived;
+	}
+	public static int getVampireCreated() {
+		return VampireCreated;
 	}
 }
 
