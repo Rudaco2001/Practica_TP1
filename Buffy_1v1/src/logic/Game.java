@@ -159,6 +159,9 @@ public class Game {
 	public int reaminVamp(){
 		return numberOfVampires - Vampire.getVampireCreated();
 	}
+	public String vampireinBoardSt() {
+		return "Vampires in Board: " + Vampire.getVampireinBoard();
+	}
 	
 	
 		// TODO Auto-generated method stub
