@@ -4,6 +4,7 @@ import java.util.Random;
 import View.GamePrinter;
 import Lists.ListContainer;
 import characters.Player;
+import characters.Vampire;
 
 
 public class Game {
@@ -17,6 +18,7 @@ public class Game {
 	private Player player;
 	private GamePrinter printer;
 	private int cicle = 0;
+	boolean Ended = false;
 	
 	
 	public Game(long seed, Level level) {
@@ -137,6 +139,30 @@ public class Game {
 		return "Coins: " + player.getCoins();
 	}
 
+	public void isGameFinished() {
+		if(Vampire.getisArrived()) {
+			System.out.println("Vampires win");
+			Ended = true;
+		}
+		
+		
+	
+	}
+	public boolean getEnded() {
+		return Ended;
+	}
+
+	public void Exit() {
+		Ended = true;		
+	}
+	
+	public int reaminVamp(){
+		return numberOfVampires - Vampire.getVampireCreated();
+	}
+	
+	
+		// TODO Auto-generated method stub
+		
 	
 }
 	
