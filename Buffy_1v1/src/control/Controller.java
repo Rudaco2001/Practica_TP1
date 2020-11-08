@@ -38,6 +38,7 @@ public class Controller {
     	while(!game.getEnded()) {
     		System.out.println(game.PlayerString());
     		remainVampMsg();
+    		System.out.println(game.vampireinBoardSt());
     		printGame();
     		System.out.println(prompt);
     		cmd = scanner.nextLine().toLowerCase();
