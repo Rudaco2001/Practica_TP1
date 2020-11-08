@@ -10,6 +10,7 @@ public class Vampire {
 	private int cicloI = 1;
 	private Game game;
 	private static int VampireCreated = 0;
+	private static int VampireinBoard = 0;
 	private static boolean isArrived = false;
 	public Vampire(int i, int j, Game game) {
 		// TODO Auto-generated constructor stub
@@ -17,6 +18,7 @@ public class Vampire {
 		pos_X = i;
 		pos_Y = j;	
 		VampireCreated++;
+		VampireinBoard++;
 	}
 	
 	public void takeDamage (int damage) {
@@ -49,8 +51,13 @@ public class Vampire {
 				
 	}
 
-	public boolean isDead() {		
-		return health <= 0;
+	public boolean isDead() {	
+		if (health <= 0) {
+			VampireinBoard--;
+			return true;
+		}
+		return false;
+		
 	}
 
 	public void Attack() {
@@ -65,6 +72,9 @@ public class Vampire {
 	}
 	public static int getVampireCreated() {
 		return VampireCreated;
+	}
+	public static int getVampireinBoard() {
+		return VampireinBoard;
 	}
 }
 
